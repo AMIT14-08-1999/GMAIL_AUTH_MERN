@@ -1,0 +1,33 @@
+const router = require("express").Router();
+const userCtrl = require("../controllers/userCtrl")
+const auth = require("../middleware/auth")
+const authAdmin = require("../middleware/authAdmin")
+
+
+
+router.post("/register", userCtrl.register)
+
+router.post("/activation", userCtrl.activateEamil)
+
+router.post("/login", userCtrl.login)
+
+router.post("/refresh_token", userCtrl.getAccessToken)
+
+router.post("/forgot", userCtrl.forgotpassword)
+
+router.post("/resetpassword", auth, userCtrl.resetPassword)
+
+router.get("/infor", auth, userCtrl.getUserInfor)
+
+router.get("/all_infor", auth, authAdmin, userCtrl.getUsersAllInfor)
+
+router.get("/logout", userCtrl.logOut)
+
+router.patch("/update", auth, userCtrl.updateUser)
+
+router.patch("/update_role/:id", auth, authAdmin, userCtrl.updateUserRole)
+
+router.delete("/delete/:id", auth, authAdmin, userCtrl.deleteUser)
+
+
+module.exports = router;

@@ -1,0 +1,1 @@
+npm i express mongoose dotenv cors cookie-parser bcrypt jsonwebtoken cloudinary express-fileupload googleapis node-fetch nodemailer
